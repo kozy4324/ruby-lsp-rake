@@ -5,7 +5,7 @@ require_relative "indexing_enhancement"
 require_relative "hover"
 
 module RubyLsp
-  module RakeGoToTaskDef
+  module Rake
     class Addon < ::RubyLsp::Addon # rubocop:disable Style/Documentation
       def activate(global_state, _message_queue)
         @index = global_state.index

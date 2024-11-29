@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module RubyLsp
-  module RakeGoToTaskDef
+  module Rake
     class Hover # rubocop:disable Style/Documentation
       include Requests::Support::Common
 

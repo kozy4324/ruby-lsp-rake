@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module RubyLsp
-  module RakeGoToTaskDef
+  module Rake
     class IndexingEnhancement < RubyIndexer::Enhancement # rubocop:disable Style/Documentation
       def on_call_node_enter(node) # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
         return unless @listener.current_owner.nil?
