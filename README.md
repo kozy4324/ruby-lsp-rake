@@ -24,6 +24,8 @@ gem install ruby-lsp-rake
 
 Add a link to the location where the dependency task is defined to the hover content.
 
+![depenency_task_links_on_hover](img/dependency_task_links_on_hover.png)
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
