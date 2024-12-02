@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     ruby-lsp-rake (0.1.0)
+      ruby-lsp (~> 0.22.1)
 
 GEM
   remote: https://rubygems.org/
@@ -9,14 +10,18 @@ GEM
     ast (2.4.2)
     json (2.8.2)
     language_server-protocol (3.17.0.3)
+    logger (1.6.1)
     minitest (5.25.2)
     parallel (1.26.3)
     parser (3.3.6.0)
       ast (~> 2.4.1)
       racc
+    prism (1.2.0)
     racc (1.8.1)
     rainbow (3.1.1)
     rake (13.2.1)
+    rbs (3.6.1)
+      logger
     regexp_parser (2.9.2)
     rubocop (1.69.0)
       json (~> 2.3)
@@ -30,7 +35,13 @@ GEM
       unicode-display_width (>= 2.4.0, < 4.0)
     rubocop-ast (1.36.2)
       parser (>= 3.3.1.0)
+    ruby-lsp (0.22.1)
+      language_server-protocol (~> 3.17.0)
+      prism (>= 1.2, < 2.0)
+      rbs (>= 3, < 4)
+      sorbet-runtime (>= 0.5.10782)
     ruby-progressbar (1.13.0)
+    sorbet-runtime (0.5.11670)
     unicode-display_width (3.1.2)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
