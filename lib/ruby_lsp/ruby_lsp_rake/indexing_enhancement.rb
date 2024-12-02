@@ -34,7 +34,7 @@ module RubyLsp
         @listener.add_method(
           "task_#{name}",
           location,
-          nil
+          []
         )
       end
 
