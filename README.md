@@ -1,6 +1,6 @@
 # ruby-lsp-rake
 
-A Ruby LSP addon that adds extra editor functionality for Rake.
+A Ruby LSP addon that adds extra editor functionality for [Rake](https://github.com/ruby/rake).
 
 ## Installation
 
