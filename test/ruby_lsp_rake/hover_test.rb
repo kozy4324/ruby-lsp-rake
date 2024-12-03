@@ -57,6 +57,19 @@ module RubyLsp
         CONTENT
       end
 
+      def test_prerequisite_accepts_symbols
+        response = hover_on_source(<<~RUBY, { line: 0, character: 14 })
+          task default: :test
+
+          task :test do
+            ruby "test/unittest.rb"
+          end
+        RUBY
+        assert_equal(<<~CONTENT.chomp, response.contents.value)
+          Definitions: [task :test](file:///fake.rb#L3,1-5,4)
+        CONTENT
+      end
+
       private
 
       def hover_on_source(source, position) # rubocop:disable Metrics/MethodLength

@@ -9,10 +9,19 @@ module RubyLsp
         @response_builder = response_builder
         @node_context = node_context
         dispatcher.register(self, :on_string_node_enter)
+        dispatcher.register(self, :on_symbol_node_enter)
         @index = index
       end
 
-      def on_string_node_enter(node) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+      def on_string_node_enter(node)
+        handle_prerequisite(node)
+      end
+
+      def on_symbol_node_enter(node)
+        handle_prerequisite(node)
+      end
+
+      def handle_prerequisite(node) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
         call_node_name = @node_context.call_node&.name
         return unless call_node_name == :task
 
