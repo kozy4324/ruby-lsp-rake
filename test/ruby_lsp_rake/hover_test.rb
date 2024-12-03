@@ -5,7 +5,7 @@ module RubyLsp
     class TestHover < Minitest::Test
       include RubyLsp::TestHelper
 
-      def test_hook_returns_link_to_task_defined
+      def test_hook_returns_link_to_task_defined_by_symbol
         response = hover_on_source(<<~RUBY, { line: 0, character: 17 })
           task default: %w[test]
 
@@ -18,12 +18,53 @@ module RubyLsp
         CONTENT
       end
 
+      def test_hook_returns_link_to_task_defined_by_string
+        response = hover_on_source(<<~RUBY, { line: 0, character: 17 })
+          task default: %w[test]
+
+          task "test" do
+            ruby "test/unittest.rb"
+          end
+        RUBY
+        assert_equal(<<~CONTENT.chomp, response.contents.value)
+          Definitions: [task :test](file:///fake.rb#L3,1-5,4)
+        CONTENT
+      end
+
+      def test_hook_returns_link_to_task_defined_by_hash_with_string_key
+        response = hover_on_source(<<~RUBY, { line: 0, character: 17 })
+          task default: %w[test]
+
+          task "test" => :prereq do
+            ruby "test/unittest.rb"
+          end
+        RUBY
+        assert_equal(<<~CONTENT.chomp, response.contents.value)
+          Definitions: [task :test](file:///fake.rb#L3,1-5,4)
+        CONTENT
+      end
+
+      def test_hook_returns_link_to_task_defined_by_hash_with_symbol_key
+        response = hover_on_source(<<~RUBY, { line: 0, character: 17 })
+          task default: %w[test]
+
+          task test: :prereq do
+            ruby "test/unittest.rb"
+          end
+        RUBY
+        assert_equal(<<~CONTENT.chomp, response.contents.value)
+          Definitions: [task :test](file:///fake.rb#L3,1-5,4)
+        CONTENT
+      end
+
       private
 
-      def hover_on_source(source, position)
+      def hover_on_source(source, position) # rubocop:disable Metrics/MethodLength
+        @id ||= 1
+        @id += 1
         with_server(source, stub_no_typechecker: true) do |server, uri|
           server.process_message(
-            id: 1,
+            id: @id,
             method: "textDocument/hover",
             params: { textDocument: { uri: uri }, position: position }
           )
