@@ -14,11 +14,11 @@ module RubyLsp
       def deactivate; end
 
       def name
-        "Ruby LSP Rake go to task def"
+        "A Ruby LSP addon that adds extra editor functionality for Rake"
       end
 
       def version
-        "0.1.0"
+        ::Ruby::Lsp::Rake::VERSION
       end
 
       def create_hover_listener(response_builder, node_context, dispatcher)
