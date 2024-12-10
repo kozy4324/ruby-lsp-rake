@@ -10,3 +10,6 @@ gem "rake", "~> 13.0"
 gem "minitest", "~> 5.16"
 
 gem "rubocop", "~> 1.21"
+
+gem "sorbet-static-and-runtime"
+gem "tapioca", require: false, group: %i[development test]
