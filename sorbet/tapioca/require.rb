@@ -1,8 +1,11 @@
 # typed: true
 # frozen_string_literal: true
 
-# Add your extra requires here (`bin/tapioca require` can be used to bootstrap this list)
-
+require "core_ext/uri"
+require "minitest/autorun"
 require "ruby-lsp"
+require "ruby/lsp/rake"
+require "ruby_lsp/addon"
 require "ruby_lsp/internal"
+require "ruby_lsp/ruby_lsp_rake/addon"
 require "ruby_lsp/test_helper"

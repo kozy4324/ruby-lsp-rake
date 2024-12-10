@@ -1,3 +1,4 @@
+# typed: true
 # frozen_string_literal: true
 
 module RubyLsp
@@ -39,7 +40,7 @@ module RubyLsp
         contents = entries.map do |entry|
           label = "task :#{name}"
           loc = entry.location
-          uri = URI::Generic.from_path(
+          uri = T.unsafe(URI::Generic).from_path(
             path: entry.file_path,
             fragment: "L#{loc.start_line},#{loc.start_column + 1}-#{loc.end_line},#{loc.end_column + 1}"
           )

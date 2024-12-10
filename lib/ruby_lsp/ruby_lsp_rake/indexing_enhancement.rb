@@ -1,3 +1,4 @@
+# typed: true
 # frozen_string_literal: true
 
 module RubyLsp
@@ -17,13 +18,15 @@ module RubyLsp
                when Prism::SymbolNode
                  arg.value
                when Prism::KeywordHashNode
-                 case arg.child_nodes.first
+                 kh = arg.child_nodes.first
+                 case kh
                  when Prism::AssocNode
-                   case arg.child_nodes.first.key
+                   k = kh.key
+                   case k
                    when Prism::StringNode
-                     arg.child_nodes.first.key.content
+                     k.content
                    when Prism::SymbolNode
-                     arg.child_nodes.first.key.value
+                     k.value
                    end
                  end
                end
