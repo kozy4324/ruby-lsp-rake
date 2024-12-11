@@ -18,20 +18,6 @@ If bundler is not being used to manage dependencies, install the gem by executin
 gem install ruby-lsp-rake
 ```
 
-## Indexing Configuration
-
-To index tasks defined in `Rakefile` files, configure `rubyLsp.indexing.includedPatterns` as shown below.
-
-```
-{
-    "rubyLsp.indexing": {
-        "includedPatterns": ["**/Rakefile"]
-    }
-}
-```
-
-see also: https://shopify.github.io/ruby-lsp/#configuring-code-indexing
-
 ## Features
 
 ### Dependency task links on hover
