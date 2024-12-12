@@ -9,8 +9,7 @@ module RubyLsp
       def initialize(response_builder, node_context, dispatcher, index)
         @response_builder = response_builder
         @node_context = node_context
-        dispatcher.register(self, :on_string_node_enter)
-        dispatcher.register(self, :on_symbol_node_enter)
+        dispatcher.register(self, :on_string_node_enter, :on_symbol_node_enter)
         @index = index
       end
 
