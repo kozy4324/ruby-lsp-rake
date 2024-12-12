@@ -92,6 +92,28 @@ module RubyLsp
         CONTENT
       end
 
+      def test_hook_returns_link_to_task_defined_with_desc
+        response = hover_on_source(<<~RUBY, { line: 0, character: 17 })
+          task default: %w[test]
+
+          desc "this string is description for task test"
+          task :test do
+            ruby "test/unittest.rb"
+          end
+        RUBY
+        assert_equal(<<~CONTENT.chomp, response.contents.value)
+          ```
+          rake test
+          ```
+
+          Definitions: [fake.rb](file:///fake.rb#L4,1-6,4)
+
+
+
+          this string is description for task test
+        CONTENT
+      end
+
       private
 
       def hover_on_source(source, position) # rubocop:disable Metrics/MethodLength

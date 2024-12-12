@@ -36,6 +36,7 @@ module RubyLsp
         return unless @index.indexed? task_name
 
         # refer to: https://github.com/Shopify/ruby-lsp/blob/896617a0c5f7a22ebe12912a481bf1b59db14c12/lib/ruby_lsp/requests/support/common.rb#L83
+        content = +""
         entries = @index[task_name]
         links = entries.map do |entry|
           loc = entry.location
@@ -43,10 +44,12 @@ module RubyLsp
             path: entry.file_path,
             fragment: "L#{loc.start_line},#{loc.start_column + 1}-#{loc.end_line},#{loc.end_column + 1}"
           )
+          content << "\n\n#{entry.comments}" unless entry.comments.empty?
           "[#{entry.file_name}](#{uri})"
         end
         @response_builder.push("```\nrake #{name}\n```", category: :title)
         @response_builder.push("Definitions: #{links.join(" | ")}", category: :links)
+        @response_builder.push(content, category: :documentation)
       end
     end
   end
