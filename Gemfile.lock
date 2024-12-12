@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ruby-lsp-rake (0.1.1)
+    ruby-lsp-rake (0.1.2)
       ruby-lsp (~> 0.22.1)
 
 GEM

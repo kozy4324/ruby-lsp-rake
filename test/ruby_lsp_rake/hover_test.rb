@@ -16,7 +16,11 @@ module RubyLsp
           end
         RUBY
         assert_equal(<<~CONTENT.chomp, response.contents.value)
-          Definitions: [task :test](file:///fake.rb#L3,1-5,4)
+          ```
+          rake test
+          ```
+
+          Definitions: [fake.rb](file:///fake.rb#L3,1-5,4)
         CONTENT
       end
 
@@ -29,7 +33,11 @@ module RubyLsp
           end
         RUBY
         assert_equal(<<~CONTENT.chomp, response.contents.value)
-          Definitions: [task :test](file:///fake.rb#L3,1-5,4)
+          ```
+          rake test
+          ```
+
+          Definitions: [fake.rb](file:///fake.rb#L3,1-5,4)
         CONTENT
       end
 
@@ -42,7 +50,11 @@ module RubyLsp
           end
         RUBY
         assert_equal(<<~CONTENT.chomp, response.contents.value)
-          Definitions: [task :test](file:///fake.rb#L3,1-5,4)
+          ```
+          rake test
+          ```
+
+          Definitions: [fake.rb](file:///fake.rb#L3,1-5,4)
         CONTENT
       end
 
@@ -55,7 +67,11 @@ module RubyLsp
           end
         RUBY
         assert_equal(<<~CONTENT.chomp, response.contents.value)
-          Definitions: [task :test](file:///fake.rb#L3,1-5,4)
+          ```
+          rake test
+          ```
+
+          Definitions: [fake.rb](file:///fake.rb#L3,1-5,4)
         CONTENT
       end
 
@@ -68,7 +84,11 @@ module RubyLsp
           end
         RUBY
         assert_equal(<<~CONTENT.chomp, response.contents.value)
-          Definitions: [task :test](file:///fake.rb#L3,1-5,4)
+          ```
+          rake test
+          ```
+
+          Definitions: [fake.rb](file:///fake.rb#L3,1-5,4)
         CONTENT
       end
 
