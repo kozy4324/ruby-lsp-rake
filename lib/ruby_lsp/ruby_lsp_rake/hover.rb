@@ -32,6 +32,33 @@ module RubyLsp
                  node.value
                end
 
+        arg = @node_context.call_node.arguments&.arguments&.first
+        case arg
+        when Prism::KeywordHashNode
+          kh = arg.child_nodes.first
+          case kh
+          when Prism::AssocNode
+            v = kh.value
+            case v
+            when Prism::StringNode
+              return unless name == v.content
+            when Prism::SymbolNode
+              return unless name == v.value
+            when Prism::ArrayNode
+              return unless v.elements.find do |node|
+                name == case node
+                        when Prism::StringNode
+                          node.content
+                        when Prism::SymbolNode
+                          node.value
+                        end
+              end
+            end
+          end
+        else
+          return
+        end
+
         task_name = "task:#{name}"
         return unless @index.indexed? task_name
 
