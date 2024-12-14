@@ -10,7 +10,7 @@ module RubyLsp
     class Addon < ::RubyLsp::Addon # rubocop:disable Style/Documentation
       def activate(global_state, _message_queue)
         @index = global_state.index
-        @index.configuration.apply_config({ "included_patterns" => ["**/Rakefile"] })
+        @index.configuration.apply_config({ "included_patterns" => ["**/Rakefile", "lib/../Rakefile"] })
       end
 
       def deactivate; end
