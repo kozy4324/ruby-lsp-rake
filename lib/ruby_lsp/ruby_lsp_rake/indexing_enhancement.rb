@@ -44,7 +44,7 @@ module RubyLsp
 
         location = node.location
         @listener.add_method(
-          "task_#{name}",
+          "task:#{name}",
           location,
           [],
           comments: @last_desc

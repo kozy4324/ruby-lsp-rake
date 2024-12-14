@@ -32,7 +32,7 @@ module RubyLsp
                  node.value
                end
 
-        task_name = "task_#{name}"
+        task_name = "task:#{name}"
         return unless @index.indexed? task_name
 
         # refer to: https://github.com/Shopify/ruby-lsp/blob/896617a0c5f7a22ebe12912a481bf1b59db14c12/lib/ruby_lsp/requests/support/common.rb#L83
