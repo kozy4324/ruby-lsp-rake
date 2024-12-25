@@ -17,3 +17,25 @@ namespace :srb do
     sh "bundle exec srb tc"
   end
 end
+
+task aaa: %i[bbb ccc:ddd eee:fff]
+
+task :bbb do
+  puts :bbb
+end
+
+namespace :ccc do
+  task ddd: :eee do
+    puts "ccc:ddd"
+  end
+
+  task :eee do
+    puts "ccc:eee"
+  end
+end
+
+namespace :eee do
+  task :fff do
+    puts "eee:fff"
+  end
+end
