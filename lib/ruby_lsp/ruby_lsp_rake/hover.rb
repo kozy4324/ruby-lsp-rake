@@ -4,8 +4,17 @@
 module RubyLsp
   module Rake
     class Hover # rubocop:disable Style/Documentation
+      extend T::Sig
       include Requests::Support::Common
 
+      sig do
+        override.params(
+          response_builder: ResponseBuilders::Hover,
+          node_context: NodeContext,
+          dispatcher: Prism::Dispatcher,
+          index: RubyIndexer::Index
+        ).void
+      end
       def initialize(response_builder, node_context, dispatcher, index)
         @response_builder = response_builder
         @node_context = node_context
@@ -13,14 +22,17 @@ module RubyLsp
         @index = index
       end
 
+      sig { params(node: Prism::StringNode).void }
       def on_string_node_enter(node)
         handle_prerequisite(node)
       end
 
+      sig { params(node: Prism::SymbolNode).void }
       def on_symbol_node_enter(node)
         handle_prerequisite(node)
       end
 
+      sig { params(node: T.any(Prism::StringNode, Prism::SymbolNode)).void }
       def handle_prerequisite(node) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
         call_node_name = @node_context.call_node&.name
         return unless call_node_name == :task
@@ -32,7 +44,7 @@ module RubyLsp
                  node.value
                end
 
-        arg = @node_context.call_node.arguments&.arguments&.first
+        arg = @node_context.call_node&.arguments&.arguments&.first
         case arg
         when Prism::KeywordHashNode
           kh = arg.child_nodes.first
@@ -65,7 +77,7 @@ module RubyLsp
         # refer to: https://github.com/Shopify/ruby-lsp/blob/896617a0c5f7a22ebe12912a481bf1b59db14c12/lib/ruby_lsp/requests/support/common.rb#L83
         content = +""
         entries = @index[task_name]
-        links = entries.map do |entry|
+        links = entries&.map do |entry|
           loc = entry.location
           uri = T.unsafe(URI::Generic).from_path(
             path: entry.file_path,
@@ -75,7 +87,7 @@ module RubyLsp
           "[#{entry.file_name}](#{uri})"
         end
         @response_builder.push("```\nrake #{name}\n```", category: :title)
-        @response_builder.push("Definitions: #{links.join(" | ")}", category: :links)
+        @response_builder.push("Definitions: #{links&.join(" | ")}", category: :links)
         @response_builder.push(content, category: :documentation)
       end
     end
