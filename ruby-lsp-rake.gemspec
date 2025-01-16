@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/ruby/lsp/rake/version"
+require_relative "lib/ruby_lsp_rake/version"
 
 Gem::Specification.new do |spec|
   spec.name = "ruby-lsp-rake"
-  spec.version = Ruby::Lsp::Rake::VERSION
+  spec.version = RubyLsp::Rake::VERSION
   spec.authors = ["Koji NAKAMURA"]
   spec.email = ["kozy4324@gmail.com"]
 
