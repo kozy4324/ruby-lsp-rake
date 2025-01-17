@@ -4,10 +4,10 @@ require "test_helper"
 
 module RubyLsp
   module Rake
-    class TestHover < Minitest::Test
+    class TestHover < Minitest::Test # rubocop:disable Metrics/ClassLength
       include RubyLsp::TestHelper
 
-      def test_hook_returns_link_to_task_defined_by_symbol
+      def test_hook_returns_link_to_task_defined_by_symbol # rubocop:disable Metrics/MethodLength
         response = hover_on_source(<<~RUBY, { line: 0, character: 17 })
           task default: %w[test]
 
@@ -24,7 +24,7 @@ module RubyLsp
         CONTENT
       end
 
-      def test_hook_returns_link_to_task_defined_by_string
+      def test_hook_returns_link_to_task_defined_by_string # rubocop:disable Metrics/MethodLength
         response = hover_on_source(<<~RUBY, { line: 0, character: 17 })
           task default: %w[test]
 
@@ -41,7 +41,7 @@ module RubyLsp
         CONTENT
       end
 
-      def test_hook_returns_link_to_task_defined_by_hash_with_string_key
+      def test_hook_returns_link_to_task_defined_by_hash_with_string_key # rubocop:disable Metrics/MethodLength
         response = hover_on_source(<<~RUBY, { line: 0, character: 17 })
           task default: %w[test]
 
@@ -58,7 +58,7 @@ module RubyLsp
         CONTENT
       end
 
-      def test_hook_returns_link_to_task_defined_by_hash_with_symbol_key
+      def test_hook_returns_link_to_task_defined_by_hash_with_symbol_key # rubocop:disable Metrics/MethodLength
         response = hover_on_source(<<~RUBY, { line: 0, character: 17 })
           task default: %w[test]
 
@@ -75,7 +75,7 @@ module RubyLsp
         CONTENT
       end
 
-      def test_prerequisite_accepts_symbols
+      def test_prerequisite_accepts_symbols # rubocop:disable Metrics/MethodLength
         response = hover_on_source(<<~RUBY, { line: 0, character: 14 })
           task default: :test
 
@@ -92,7 +92,7 @@ module RubyLsp
         CONTENT
       end
 
-      def test_hook_returns_link_to_task_defined_with_desc
+      def test_hook_returns_link_to_task_defined_with_desc # rubocop:disable Metrics/MethodLength
         response = hover_on_source(<<~RUBY, { line: 0, character: 17 })
           task default: %w[test]
 

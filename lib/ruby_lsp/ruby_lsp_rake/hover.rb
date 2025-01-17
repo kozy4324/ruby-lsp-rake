@@ -33,7 +33,7 @@ module RubyLsp
       end
 
       sig { params(node: T.any(Prism::StringNode, Prism::SymbolNode)).void }
-      def handle_prerequisite(node) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+      def handle_prerequisite(node) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
         call_node_name = @node_context.call_node&.name
         return unless call_node_name == :task
 
@@ -58,7 +58,7 @@ module RubyLsp
               return unless name == v.value
             when Prism::ArrayNode
               return unless v.elements.find do |node|
-                name == case node
+                name == case node # rubocop:disable Metrics/BlockNesting
                         when Prism::StringNode
                           node.content
                         when Prism::SymbolNode
