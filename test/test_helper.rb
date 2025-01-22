@@ -7,3 +7,10 @@ require "minitest/autorun"
 require "ruby_lsp/internal"
 require "ruby_lsp/test_helper"
 require "ruby_lsp/ruby_lsp_rake/addon"
+
+module ActiveSupport
+  class TestCase
+    extend T::Sig
+    include RubyLsp::TestHelper
+  end
+end

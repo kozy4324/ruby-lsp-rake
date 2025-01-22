@@ -4,6 +4,7 @@
 require "ruby_lsp/addon"
 require_relative "indexing_enhancement"
 require_relative "hover"
+require_relative "definition"
 
 module RubyLsp
   module Rake
@@ -38,6 +39,20 @@ module RubyLsp
       end
       def create_hover_listener(response_builder, node_context, dispatcher)
         Hover.new(response_builder, node_context, dispatcher, @index)
+      end
+
+      sig do
+        override.params(
+          response_builder: ResponseBuilders::CollectionResponseBuilder[T.any(
+            Interface::Location, Interface::LocationLink
+          )],
+          _uri: URI::Generic,
+          node_context: NodeContext,
+          dispatcher: Prism::Dispatcher
+        ).void
+      end
+      def create_definition_listener(response_builder, _uri, node_context, dispatcher)
+        Definition.new(response_builder, node_context, @index, dispatcher)
       end
     end
   end

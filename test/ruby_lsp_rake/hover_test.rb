@@ -130,18 +130,6 @@ module RubyLsp
           result.response
         end
       end
-
-      def pop_result(server)
-        result = server.pop_response
-        result = server.pop_response until result.is_a?(RubyLsp::Result) || result.is_a?(RubyLsp::Error)
-
-        refute_instance_of(
-          RubyLsp::Error,
-          result,
-          -> { "Failed to execute request #{result.message}" }
-        )
-        result
-      end
     end
   end
 end
