@@ -26,7 +26,7 @@ module RubyLsp
 
       sig { override.returns(String) }
       def version
-        ::Ruby::Lsp::Rake::VERSION
+        ::RubyLsp::Rake::VERSION
       end
 
       sig do
