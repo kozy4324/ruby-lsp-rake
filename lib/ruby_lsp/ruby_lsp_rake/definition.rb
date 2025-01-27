@@ -78,7 +78,7 @@ module RubyLsp
         task_name = "task:#{name}"
         return unless @index.indexed? task_name
 
-        entries = @index[task_name]
+        entries = T.must(@index[task_name])
 
         # refer to: https://github.com/Shopify/ruby-lsp-rails/blob/b7791290fb59b06dc99e28a991ee0607e3931a1e/lib/ruby_lsp/ruby_lsp_rails/definition.rb#L141-L152
         entries.each do |entry|

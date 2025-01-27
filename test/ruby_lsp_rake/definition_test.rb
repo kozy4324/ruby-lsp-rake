@@ -7,7 +7,7 @@ module RubyLsp
     class TestDefinition < Minitest::Test
       include RubyLsp::TestHelper
 
-      def test_recognizes_task_definition
+      def test_recognizes_task_definition # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
         response = generate_definitions_for_source(<<~RUBY, { line: 2, character: 11 })
           # typed: false
 

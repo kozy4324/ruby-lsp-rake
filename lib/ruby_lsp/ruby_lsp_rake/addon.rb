@@ -5,6 +5,7 @@ require "ruby_lsp/addon"
 require_relative "indexing_enhancement"
 require_relative "hover"
 require_relative "definition"
+require_relative "code_lens"
 
 module RubyLsp
   module Rake
@@ -53,6 +54,17 @@ module RubyLsp
       end
       def create_definition_listener(response_builder, _uri, node_context, dispatcher)
         Definition.new(response_builder, node_context, @index, dispatcher)
+      end
+
+      sig do
+        override.params(
+          response_builder: ResponseBuilders::CollectionResponseBuilder[Interface::CodeLens],
+          uri: URI::Generic,
+          dispatcher: Prism::Dispatcher
+        ).void
+      end
+      def create_code_lens_listener(response_builder, uri, dispatcher)
+        CodeLens.new(response_builder, uri, dispatcher)
       end
     end
   end

@@ -9,7 +9,7 @@ require "rubocop/rake_task"
 
 RuboCop::RakeTask.new
 
-task default: %i[test rubocop]
+task default: %i[test rubocop srb:tc]
 
 namespace :srb do
   desc "Run sorbet type check"
