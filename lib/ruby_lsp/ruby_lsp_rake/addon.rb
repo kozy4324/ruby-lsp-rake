@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require "ruby_lsp/addon"
+require_relative "../../ruby_lsp_rake/version"
 require_relative "indexing_enhancement"
 require_relative "hover"
 require_relative "definition"
