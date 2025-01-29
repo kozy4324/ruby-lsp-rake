@@ -7,3 +7,7 @@ Style/StringLiterals:
 
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
+
+Naming/FileName:
+  Exclude:
+  - "lib/ruby-lsp-rake.rb"
