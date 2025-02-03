@@ -20,11 +20,23 @@ gem install ruby-lsp-rake
 
 ## Features
 
-### Dependency task links on hover
+### Hover over dependency task
 
-Add a link to the location where the dependency task is defined to the hover content.
+The hover over dependency task feature displays a link to its definition location and its `desc` string.
 
-![depenency_task_links_on_hover](img/dependency_task_links_on_hover.png)
+![hover_over_dependency_task](img/hover_over_dependency_task.png)
+
+### Go-to-Definition
+
+`Command + click` on a dependency task allows users to navigate to its definition location.
+
+![go_to_definition](img/go_to_definition.png)
+
+### Code Lens
+
+Clicking the `Run In Terminal` button above a task definition allows you to run the task.
+
+![code_lens](img/code_lens.png)
 
 ## Development
 

@@ -20,6 +20,7 @@ end
 
 task aaa: %i[bbb ccc:ddd eee:fff]
 
+desc 'this task puts out string "bbb"'
 task :bbb do
   puts :bbb
 end
