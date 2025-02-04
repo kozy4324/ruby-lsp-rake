@@ -14,9 +14,11 @@ module RubyLsp
       extend T::Sig
 
       sig { override.params(global_state: GlobalState, outgoing_queue: Thread::Queue).void }
-      def activate(global_state, outgoing_queue) # rubocop:disable Lint/UnusedMethodArgument
+      def activate(global_state, outgoing_queue)
         @index = global_state.index
         @index.configuration.apply_config({ "included_patterns" => ["**/Rakefile", "lib/../Rakefile"] })
+
+        outgoing_queue << Notification.window_log_message("Activated Ruby LSP Rake")
       end
 
       sig { override.void }
