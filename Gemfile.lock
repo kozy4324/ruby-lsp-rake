@@ -50,6 +50,7 @@ GEM
       sorbet-static (= 0.5.11670)
     sorbet-runtime (0.5.11670)
     sorbet-static (0.5.11670-universal-darwin)
+    sorbet-static (0.5.11670-x86_64-linux)
     sorbet-static-and-runtime (0.5.11670)
       sorbet (= 0.5.11670)
       sorbet-runtime (= 0.5.11670)
@@ -79,6 +80,7 @@ GEM
 PLATFORMS
   arm64-darwin-23
   ruby
+  x86_64-linux
 
 DEPENDENCIES
   minitest (~> 5.16)
