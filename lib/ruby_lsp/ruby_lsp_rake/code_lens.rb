@@ -25,7 +25,7 @@ module RubyLsp
       sig { params(node: Prism::CallNode).void }
       def on_call_node_enter(node) # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
         return unless node.receiver.nil?
-        return unless node.name == :task || node.name == :namespace
+        return unless %i[task namespace].include? node.name
 
         arguments = node.arguments&.arguments
         return unless arguments

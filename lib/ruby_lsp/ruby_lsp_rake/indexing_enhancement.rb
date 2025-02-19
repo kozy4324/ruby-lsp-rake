@@ -18,7 +18,7 @@ module RubyLsp
         @last_desc = nil unless node.name == :task
 
         return unless @listener.current_owner.nil?
-        return unless node.name == :task || node.name == :desc || node.name == :namespace
+        return unless %i[task desc namespace].include? node.name
 
         arguments = node.arguments&.arguments
         return unless arguments
