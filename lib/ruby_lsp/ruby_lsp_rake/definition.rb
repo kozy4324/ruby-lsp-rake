@@ -61,12 +61,12 @@ module RubyLsp
             when Prism::SymbolNode
               return unless name == v.value
             when Prism::ArrayNode
-              return unless v.elements.find do |node|
-                name == case node # rubocop:disable Metrics/BlockNesting
+              return unless v.elements.find do |n|
+                name == case n # rubocop:disable Metrics/BlockNesting
                         when Prism::StringNode
-                          node.content
+                          n.content
                         when Prism::SymbolNode
-                          node.value
+                          n.value
                         end
               end
             end
