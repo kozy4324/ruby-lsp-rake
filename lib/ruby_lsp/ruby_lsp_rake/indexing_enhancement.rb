@@ -6,14 +6,15 @@ module RubyLsp
     class IndexingEnhancement < RubyIndexer::Enhancement # rubocop:disable Style/Documentation
       extend T::Sig
 
-      sig { params(listener: RubyIndexer::DeclarationListener).void }
+      #: (RubyIndexer::DeclarationListener listener) -> void
       def initialize(listener)
         super(listener)
         @namespace_stack = []
         @last_desc = nil
       end
 
-      sig { override.params(node: Prism::CallNode).void }
+      # @override
+      #: (Prism::CallNode node) -> void
       def on_call_node_enter(node) # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
         @last_desc = nil unless node.name == :task
 
@@ -68,7 +69,8 @@ module RubyLsp
         @last_desc = nil
       end
 
-      sig { override.params(node: Prism::CallNode).void }
+      # @override
+      #: (Prism::CallNode node) -> void
       def on_call_node_leave(node)
         return unless @listener.current_owner.nil?
         return unless node.name == :namespace

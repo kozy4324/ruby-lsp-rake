@@ -7,14 +7,8 @@ module RubyLsp
       extend T::Sig
       include Requests::Support::Common
 
-      sig do
-        override.params(
-          response_builder: ResponseBuilders::Hover,
-          node_context: NodeContext,
-          dispatcher: Prism::Dispatcher,
-          index: RubyIndexer::Index
-        ).void
-      end
+      # @override
+      #: (ResponseBuilders::Hover response_builder, NodeContext node_context, Prism::Dispatcher dispatcher, RubyIndexer::Index index) -> void
       def initialize(response_builder, node_context, dispatcher, index)
         @response_builder = response_builder
         @node_context = node_context
@@ -22,17 +16,17 @@ module RubyLsp
         @index = index
       end
 
-      sig { params(node: Prism::StringNode).void }
+      #: (Prism::StringNode node) -> void
       def on_string_node_enter(node)
         handle_prerequisite(node)
       end
 
-      sig { params(node: Prism::SymbolNode).void }
+      #: (Prism::SymbolNode node) -> void
       def on_symbol_node_enter(node)
         handle_prerequisite(node)
       end
 
-      sig { params(node: T.any(Prism::StringNode, Prism::SymbolNode)).void }
+      #: ((Prism::StringNode | Prism::SymbolNode) node) -> void
       def handle_prerequisite(node) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
         call_node_name = @node_context.call_node&.name
         return unless call_node_name == :task

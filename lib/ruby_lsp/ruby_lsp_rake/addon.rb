@@ -13,7 +13,8 @@ module RubyLsp
     class Addon < ::RubyLsp::Addon # rubocop:disable Style/Documentation
       extend T::Sig
 
-      sig { override.params(global_state: GlobalState, outgoing_queue: Thread::Queue).void }
+      # @override
+      #: (GlobalState global_state, Thread::Queue outgoing_queue) -> void
       def activate(global_state, outgoing_queue)
         @index = global_state.index
         @index.configuration.apply_config({ "included_patterns" => ["**/Rakefile", "lib/../Rakefile"] })
@@ -21,51 +22,36 @@ module RubyLsp
         outgoing_queue << Notification.window_log_message("Activated Ruby LSP Rake")
       end
 
-      sig { override.void }
+      # @override
+      #: -> void
       def deactivate; end
 
-      sig { override.returns(String) }
+      # @override
+      #: -> String
       def name
         "A Ruby LSP addon that adds extra editor functionality for Rake"
       end
 
-      sig { override.returns(String) }
+      # @override
+      #: -> String
       def version
         ::RubyLsp::Rake::VERSION
       end
 
-      sig do
-        override.params(
-          response_builder: ResponseBuilders::Hover,
-          node_context: NodeContext,
-          dispatcher: Prism::Dispatcher
-        ).void
-      end
+      # @override
+      #: (ResponseBuilders::Hover response_builder, NodeContext node_context, Prism::Dispatcher dispatcher) -> void
       def create_hover_listener(response_builder, node_context, dispatcher)
         Hover.new(response_builder, node_context, dispatcher, @index)
       end
 
-      sig do
-        override.params(
-          response_builder: ResponseBuilders::CollectionResponseBuilder[T.any(
-            Interface::Location, Interface::LocationLink
-          )],
-          _uri: URI::Generic,
-          node_context: NodeContext,
-          dispatcher: Prism::Dispatcher
-        ).void
-      end
+      # @override
+      #: (ResponseBuilders::CollectionResponseBuilder[(Interface::Location | Interface::LocationLink)] response_builder, URI::Generic _uri, NodeContext node_context, Prism::Dispatcher dispatcher) -> void
       def create_definition_listener(response_builder, _uri, node_context, dispatcher)
         Definition.new(response_builder, node_context, @index, dispatcher)
       end
 
-      sig do
-        override.params(
-          response_builder: ResponseBuilders::CollectionResponseBuilder[Interface::CodeLens],
-          uri: URI::Generic,
-          dispatcher: Prism::Dispatcher
-        ).void
-      end
+      # @override
+      #: (ResponseBuilders::CollectionResponseBuilder[Interface::CodeLens] response_builder, URI::Generic uri, Prism::Dispatcher dispatcher) -> void
       def create_code_lens_listener(response_builder, uri, dispatcher)
         CodeLens.new(response_builder, uri, dispatcher)
       end
