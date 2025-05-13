@@ -9,7 +9,11 @@ require "rubocop/rake_task"
 
 RuboCop::RakeTask.new
 
-task default: %i[test rubocop srb:tc]
+task :quiet_test do
+  sh "rake test 2>/dev/null"
+end
+
+task default: %i[quiet_test rubocop srb:tc]
 
 namespace :srb do
   desc "Run sorbet type check"
