@@ -58,7 +58,7 @@ module RubyLsp
 
         ary = [*@namespace_stack, name]
         (1..(ary.size)).each do |i|
-          @listener.add_method(
+          T.cast(@listener, RubyIndexer::DeclarationListener).add_method(
             "task:#{ary[-i..]&.join(":")}",
             node.location,
             [],
