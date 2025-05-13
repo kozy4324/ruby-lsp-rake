@@ -45,13 +45,13 @@ module RubyLsp
       end
 
       # @override
-      #: (ResponseBuilders::CollectionResponseBuilder[(Interface::Location | Interface::LocationLink)] response_builder, URI::Generic _uri, NodeContext node_context, Prism::Dispatcher dispatcher) -> void
+      #: (ResponseBuilders::CollectionResponseBuilder response_builder, URI::Generic _uri, NodeContext node_context, Prism::Dispatcher dispatcher) -> void
       def create_definition_listener(response_builder, _uri, node_context, dispatcher)
         Definition.new(response_builder, node_context, @index, dispatcher)
       end
 
       # @override
-      #: (ResponseBuilders::CollectionResponseBuilder[Interface::CodeLens] response_builder, URI::Generic uri, Prism::Dispatcher dispatcher) -> void
+      #: (ResponseBuilders::CollectionResponseBuilder response_builder, URI::Generic uri, Prism::Dispatcher dispatcher) -> void
       def create_code_lens_listener(response_builder, uri, dispatcher)
         CodeLens.new(response_builder, uri, dispatcher)
       end

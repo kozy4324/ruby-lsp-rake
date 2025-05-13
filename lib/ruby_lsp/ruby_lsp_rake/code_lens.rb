@@ -7,7 +7,7 @@ module RubyLsp
       extend T::Sig
       include Requests::Support::Common
 
-      #: (ResponseBuilders::CollectionResponseBuilder[Interface::CodeLens] response_builder, URI::Generic uri, Prism::Dispatcher dispatcher) -> void
+      #: (ResponseBuilders::CollectionResponseBuilder response_builder, URI::Generic uri, Prism::Dispatcher dispatcher) -> void
       def initialize(response_builder, uri, dispatcher)
         @response_builder = response_builder
         @path = T.let(T.unsafe(uri).to_standardized_path, T.nilable(String))

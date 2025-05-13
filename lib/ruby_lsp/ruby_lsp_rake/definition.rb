@@ -7,7 +7,7 @@ module RubyLsp
       extend T::Sig
       include Requests::Support::Common
 
-      #: (RubyLsp::ResponseBuilders::CollectionResponseBuilder[(Interface::Location | Interface::LocationLink)] response_builder, NodeContext node_context, RubyIndexer::Index index, Prism::Dispatcher dispatcher) -> void
+      #: (RubyLsp::ResponseBuilders::CollectionResponseBuilder response_builder, NodeContext node_context, RubyIndexer::Index index, Prism::Dispatcher dispatcher) -> void
       def initialize(response_builder, node_context, index, dispatcher)
         @response_builder = response_builder
         @node_context = node_context
