@@ -3,6 +3,9 @@ AllCops:
   NewCops: disable
   SuggestExtensions: false
 
+Style/Documentation:
+  Enabled: false
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 

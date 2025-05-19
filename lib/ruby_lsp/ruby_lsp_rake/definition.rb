@@ -3,7 +3,7 @@
 
 module RubyLsp
   module Rake
-    class Definition # rubocop:disable Style/Documentation
+    class Definition
       extend T::Sig
       include Requests::Support::Common
 

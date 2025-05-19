@@ -10,7 +10,7 @@ require_relative "code_lens"
 
 module RubyLsp
   module Rake
-    class Addon < ::RubyLsp::Addon # rubocop:disable Style/Documentation
+    class Addon < ::RubyLsp::Addon
       extend T::Sig
 
       # @override

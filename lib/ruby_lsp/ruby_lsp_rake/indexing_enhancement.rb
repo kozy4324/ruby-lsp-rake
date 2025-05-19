@@ -3,7 +3,7 @@
 
 module RubyLsp
   module Rake
-    class IndexingEnhancement < RubyIndexer::Enhancement # rubocop:disable Style/Documentation
+    class IndexingEnhancement < RubyIndexer::Enhancement
       extend T::Sig
 
       #: (RubyIndexer::DeclarationListener listener) -> void

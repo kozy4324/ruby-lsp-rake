@@ -3,7 +3,7 @@
 
 module RubyLsp
   module Rake
-    class CodeLens # rubocop:disable Style/Documentation
+    class CodeLens
       extend T::Sig
       include Requests::Support::Common
 

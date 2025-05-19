@@ -3,7 +3,7 @@
 
 module RubyLsp
   module Rake
-    class Hover # rubocop:disable Style/Documentation
+    class Hover
       extend T::Sig
       include Requests::Support::Common
 
