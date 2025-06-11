@@ -21,3 +21,6 @@ Layout/LeadingCommentSpace:
 
 Layout/LineLength:
   Enabled: false
+
+plugins:
+  - rubocop-oneoff_codemod
