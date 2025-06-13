@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     ruby-lsp-rake (0.3.4)
-      ruby-lsp (~> 0.23.0)
+      ruby-lsp (~> 0.24.0)
 
 GEM
   remote: https://rubygems.org/
@@ -49,7 +49,7 @@ GEM
       lint_roller (~> 1.1)
       rbs
       rubocop (>= 1.72.1, < 2.0)
-    ruby-lsp (0.23.24)
+    ruby-lsp (0.24.1)
       language_server-protocol (~> 3.17.0)
       prism (>= 1.2, < 2.0)
       rbs (>= 3, < 5)
