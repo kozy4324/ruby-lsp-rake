@@ -58,6 +58,7 @@ GEM
     sorbet (0.5.12189)
       sorbet-static (= 0.5.12189)
     sorbet-runtime (0.5.12189)
+    sorbet-static (0.5.12189-aarch64-linux)
     sorbet-static (0.5.12189-universal-darwin)
     sorbet-static (0.5.12189-x86_64-linux)
     sorbet-static-and-runtime (0.5.12189)
@@ -90,8 +91,8 @@ GEM
       yard
 
 PLATFORMS
-  arm64-darwin-23
-  arm64-darwin-24
+  aarch64-linux
+  universal-darwin
   x86_64-linux
 
 DEPENDENCIES
@@ -104,4 +105,4 @@ DEPENDENCIES
   tapioca
 
 BUNDLED WITH
-   2.5.23
+   2.6.9
