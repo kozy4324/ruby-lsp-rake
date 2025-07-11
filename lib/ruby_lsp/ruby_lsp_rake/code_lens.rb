@@ -4,13 +4,12 @@
 module RubyLsp
   module Rake
     class CodeLens
-      extend T::Sig
       include Requests::Support::Common
 
       #: (ResponseBuilders::CollectionResponseBuilder response_builder, URI::Generic uri, Prism::Dispatcher dispatcher) -> void
       def initialize(response_builder, uri, dispatcher)
         @response_builder = response_builder
-        @path = T.let(T.unsafe(uri).to_standardized_path, T.nilable(String))
+        @path = uri.to_standardized_path
         @namespace_stack = []
 
         dispatcher.register(self, :on_call_node_enter, :on_call_node_leave)

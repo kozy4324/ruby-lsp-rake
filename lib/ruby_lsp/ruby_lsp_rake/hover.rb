@@ -4,7 +4,6 @@
 module RubyLsp
   module Rake
     class Hover
-      extend T::Sig
       include Requests::Support::Common
 
       # @override
@@ -73,7 +72,7 @@ module RubyLsp
         entries = @index[task_name]
         links = entries&.map do |entry|
           loc = entry.location
-          uri = T.unsafe(URI::Generic).from_path(
+          uri = URI::Generic.from_path(
             path: entry.file_path,
             fragment: "L#{loc.start_line},#{loc.start_column + 1}-#{loc.end_line},#{loc.end_column + 1}"
           )

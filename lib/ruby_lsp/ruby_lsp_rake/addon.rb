@@ -11,8 +11,6 @@ require_relative "code_lens"
 module RubyLsp
   module Rake
     class Addon < ::RubyLsp::Addon
-      extend T::Sig
-
       # @override
       #: (GlobalState global_state, Thread::Queue outgoing_queue) -> void
       def activate(global_state, outgoing_queue)
