@@ -4,14 +4,13 @@
 module RubyLsp
   module Rake
     class Definition
-      extend T::Sig
       include Requests::Support::Common
 
       #: (RubyLsp::ResponseBuilders::CollectionResponseBuilder response_builder, NodeContext node_context, RubyIndexer::Index index, Prism::Dispatcher dispatcher) -> void
       def initialize(response_builder, node_context, index, dispatcher)
         @response_builder = response_builder
         @node_context = node_context
-        @nesting = T.let(node_context.nesting, T::Array[String])
+        @nesting = node_context.nesting
         @index = index
 
         dispatcher.register(self, :on_symbol_node_enter, :on_string_node_enter)
@@ -69,12 +68,12 @@ module RubyLsp
         task_name = "task:#{name}"
         return unless @index.indexed? task_name
 
-        entries = T.must(@index[task_name])
+        entries = @index[task_name]
 
         # refer to: https://github.com/Shopify/ruby-lsp-rails/blob/b7791290fb59b06dc99e28a991ee0607e3931a1e/lib/ruby_lsp/ruby_lsp_rails/definition.rb#L141-L152
         entries.each do |entry|
           loc = entry.location
-          uri = T.unsafe(URI::Generic).from_path(
+          uri = URI::Generic.from_path(
             path: entry.file_path,
             fragment: "L#{loc.start_line},#{loc.start_column + 1}-#{loc.end_line},#{loc.end_column + 1}"
           )
