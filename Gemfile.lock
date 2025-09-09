@@ -27,7 +27,7 @@ GEM
     rbi (0.3.6)
       prism (~> 1.0)
       rbs (>= 3.4.4)
-    rbs (3.9.4)
+    rbs (3.9.5)
       logger
     regexp_parser (2.11.2)
     rexml (3.4.3)
