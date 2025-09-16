@@ -29,7 +29,7 @@ GEM
       rbs (>= 3.4.4)
     rbs (3.9.5)
       logger
-    regexp_parser (2.11.2)
+    regexp_parser (2.11.3)
     rexml (3.4.4)
     rubocop (1.80.2)
       json (~> 2.3)
