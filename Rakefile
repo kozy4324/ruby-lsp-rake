@@ -18,7 +18,7 @@ task default: %i[quiet_test rubocop srb:tc]
 namespace :srb do
   desc "Run sorbet type check"
   task :tc do
-    sh "bundle exec srb tc"
+    sh "bundle exec srb tc --parser=prism"
   end
 end
 
