@@ -11,7 +11,7 @@ GEM
     benchmark (0.5.0)
     drb (2.2.3)
     erubi (1.13.1)
-    json (2.19.8)
+    json (2.19.9)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
@@ -30,14 +30,14 @@ GEM
     rbi (0.3.13)
       prism (~> 1.0)
       rbs (>= 4.0.1)
-    rbs (4.0.2)
+    rbs (4.0.3)
       logger
       prism (>= 1.6.0)
       tsort
     regexp_parser (2.12.0)
     require-hooks (0.4.0)
     rexml (3.4.4)
-    rubocop (1.87.0)
+    rubocop (1.88.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -64,15 +64,15 @@ GEM
     rubydex (0.2.5-arm64-darwin)
     rubydex (0.2.5-x86_64-darwin)
     rubydex (0.2.5-x86_64-linux)
-    sorbet (0.6.13286)
-      sorbet-static (= 0.6.13286)
-    sorbet-runtime (0.6.13286)
-    sorbet-static (0.6.13286-aarch64-linux)
-    sorbet-static (0.6.13286-universal-darwin)
-    sorbet-static (0.6.13286-x86_64-linux)
-    sorbet-static-and-runtime (0.6.13286)
-      sorbet (= 0.6.13286)
-      sorbet-runtime (= 0.6.13286)
+    sorbet (0.6.13308)
+      sorbet-static (= 0.6.13308)
+    sorbet-runtime (0.6.13308)
+    sorbet-static (0.6.13308-aarch64-linux)
+    sorbet-static (0.6.13308-universal-darwin)
+    sorbet-static (0.6.13308-x86_64-linux)
+    sorbet-static-and-runtime (0.6.13308)
+      sorbet (= 0.6.13308)
+      sorbet-runtime (= 0.6.13308)
     spoom (1.7.16)
       erubi (>= 1.10.0)
       prism (>= 0.28.0)
@@ -114,4 +114,4 @@ DEPENDENCIES
   tapioca
 
 BUNDLED WITH
-  4.0.10
+  4.0.14
